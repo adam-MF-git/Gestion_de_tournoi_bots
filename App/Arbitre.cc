@@ -43,8 +43,12 @@ void Arbitre::partie(bool inverse) {
             timer--;
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
-
-        t.detach();
+        if (encours) {
+            t.detach();
+        }
+        else {
+            t.join();
+        }
 
         if (timer==0) {
             if (tour%2==0) {
