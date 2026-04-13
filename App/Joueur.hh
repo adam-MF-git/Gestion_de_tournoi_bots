@@ -1,8 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Jeu/includeTousJeux.hh"
-
-class Jeu;
+#include "Jeu.hh"
 
 class Joueur {
 private:
@@ -19,4 +18,5 @@ public:
 
     void jouer(Jeu * const & le_jeu,bool & en_cours,int & coup);
     virtual int recherche_coup(Jeu * const & le_jeu)=0;
+
 };

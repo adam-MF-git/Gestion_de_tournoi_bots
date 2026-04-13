@@ -1,3 +1,5 @@
 App/build
 App/.qtcreator
 modification
+.idea
+App/cmake-build-debug

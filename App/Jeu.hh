@@ -10,10 +10,11 @@ enum class etat_de_partie{
 
 class Jeu {
 private:
-    void setetat(int etat);
+    void _setetat(int etat);
 public:
     Jeu();
-    Jeu(Jeu const & un_jeu)=delete;
+    Jeu(Jeu const &)=delete;
+    Jeu & operator=(Jeu const &) = delete;
 
     virtual void joue(int coup)=0;
     virtual void reset()=0;

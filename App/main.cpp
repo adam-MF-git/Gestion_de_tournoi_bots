@@ -1,9 +1,8 @@
 #include <iostream>
 
-using namespace std;
-
-int main()
+int main(int argc, char **argv)
 {
-    cout << "Hello World!" << endl;
+    std::cout << "argc : " << argc << " argv " << argv << " " << argv[0] << std::endl;
+    std::cout << "Hello World!" << std::endl;
     return 0;
 }
