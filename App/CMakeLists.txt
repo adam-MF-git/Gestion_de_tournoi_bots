@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(App LANGUAGES CXX)
+project(Projet-Tournois LANGUAGES CXX)
 
 
 set(CMAKE_BUILD_TYPE Debug)
@@ -11,36 +11,23 @@ add_compile_options(-Wall -Wpedantic -O3)
 add_subdirectory(Joueur)
 add_subdirectory(Jeu)
 
-set(Headers
-    Jeu.hh
-    Joueur.hh
+add_executable(Tournois
+    main.cpp
     Arbitre.hh
-    Competition.hh
-    Registre.hh
-    macro.hh
-)
-
-set(Sources
-    Jeu.cc
-    Joueur.cc
     Arbitre.cc
+    Competition.hh
     Competition.cc
 )
 
-add_executable(App
-    main.cpp
-    ${Headers}
-    ${Sources}
-)
+target_link_libraries(Tournois PRIVATE Joueur Jeu)
 
 include(GNUInstallDirs)
 
 
-install(TARGETS App
+install(TARGETS Tournois
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
-target_link_libraries(App PRIVATE Joueur)
-target_link_libraries(App PRIVATE Jeu)
 
+message(NOTICE "compilation de Projet-Tournois c'est bien passé !")

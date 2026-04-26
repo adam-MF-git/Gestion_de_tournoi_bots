@@ -2,18 +2,16 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include "Jeu/includeTousJeux.hh"
-#include "Joueur/includeTousJoueurs.hh"
-
-class Joueur;
-class Jeu;
+#include <Jeu/Jeu.hh>
+#include <Joueur/Joueur.hh>
+#include "memory"
 
 class Arbitre {
 private:
-    Jeu * _le_jeu;
+    std::unique_ptr<Jeu> _le_jeu;
 
-    Joueur * _Pjoueur;      // Premier joueur
-    Joueur * _Sjoueur;      // Second joueur
+    std::unique_ptr<Joueur> _Pjoueur;      // Premier joueur
+    std::unique_ptr<Joueur> _Sjoueur;      // Second joueur
 
     int _nb_partie;
     // int _num_partie;
@@ -27,7 +25,7 @@ private:
     int _Ega;
 
 public:
-    Arbitre(Jeu * le_jeu, Joueur * Pjoueur, Joueur * Sjoueur, int nb_partie);
+    Arbitre(std::unique_ptr<Jeu> le_jeu, std::unique_ptr<Joueur> Pjoueur, std::unique_ptr<Joueur> Sjoueur, int nb_partie);
 
     void init_partie();
 

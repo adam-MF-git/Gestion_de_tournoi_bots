@@ -1,6 +1,6 @@
 #include "Arbitre.hh"
 
-Arbitre::Arbitre(Jeu * le_jeu, Joueur * Pjoueur, Joueur * Sjoueur, int nb_partie):_le_jeu(le_jeu),_Pjoueur(Pjoueur),_Sjoueur(Sjoueur),_nb_partie(nb_partie) {
+Arbitre::Arbitre(std::unique_ptr<Jeu> le_jeu, std::unique_ptr<Joueur> Pjoueur, std::unique_ptr<Joueur> Sjoueur, int nb_partie):_le_jeu(std::move(le_jeu)),_Pjoueur(std::move(Pjoueur)),_Sjoueur(std::move(Sjoueur)),_nb_partie(nb_partie) {
     _VJ1=0;
     _EJ1=0;
     _IJ1=0;
@@ -11,9 +11,9 @@ Arbitre::Arbitre(Jeu * le_jeu, Joueur * Pjoueur, Joueur * Sjoueur, int nb_partie
 }
 
 void Arbitre::init_partie() {
-    Joueur * temp(_Pjoueur);
-    _Pjoueur=_Sjoueur;
-    _Sjoueur=temp;
+    std::unique_ptr<Joueur> temp(std::move(_Pjoueur));
+    _Pjoueur=std::move(_Sjoueur);
+    _Sjoueur=std::move(temp);
 
     _le_jeu->reset();
 
@@ -27,16 +27,16 @@ void Arbitre::init_partie() {
 void Arbitre::partie(bool inverse) {
     init_partie();
     int tour=0;
-    Joueur * joueur_actuel;
+    std::unique_ptr<Joueur> joueur_actuel;
     int coup=0;
     bool encours;
     while(!_le_jeu->terminer()) {
-        if (tour%2==0) joueur_actuel=_Pjoueur;
-        else joueur_actuel=_Sjoueur;
+        if (tour%2==0) joueur_actuel=std::move(_Pjoueur);
+        else joueur_actuel=std::move(_Sjoueur);
 
         encours=true;
 
-        std::thread t(&Joueur::jouer,joueur_actuel,_le_jeu,std::ref(encours),std::ref(coup));
+        std::thread t(&Joueur::jouer,joueur_actuel.get(),_le_jeu.get(),std::ref(encours),std::ref(coup));
 
         int timer=10;
         while(encours && timer!=0) {
@@ -49,6 +49,9 @@ void Arbitre::partie(bool inverse) {
         else {
             t.join();
         }
+
+        if (tour%2==0) _Pjoueur=std::move(joueur_actuel);
+        else _Sjoueur=std::move(joueur_actuel);
 
         if (timer==0) {
             if (tour%2==0) {

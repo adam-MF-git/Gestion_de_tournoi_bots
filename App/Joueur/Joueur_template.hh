@@ -2,14 +2,14 @@
 #include <Joueur/Joueur.hh>
 #include <macro/macro.hh>
 
-class Joueur_Random : public Joueur {
+class Joueur_template : public Joueur {
 private:
 public:
-    Joueur_Random(std::string nom,bool joueur_1);
+    Joueur_template(std::string nom,bool joueur_1);
     virtual void init() override;
     virtual void init_partie() override;
 
     virtual int recherche_coup(Jeu * const & le_jeu) override;
 };
 
-ENREGISTRER_JOUEUR(Joueur_Random)
+ENREGISTRER_JOUEUR(Joueur_template)

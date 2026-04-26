@@ -1,6 +1,5 @@
 #include "Joueur.hh"
 
-
 Joueur::Joueur(std::string nom, bool joueur_1):_nom(nom),_joueur_1(joueur_1) {
 
 }

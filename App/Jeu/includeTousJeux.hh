@@ -1,1 +1,4 @@
-#include "../Jeu.hh"
+#include <Jeu/Jeu.hh>
+
+#include "Jeu_template.hh"
+
