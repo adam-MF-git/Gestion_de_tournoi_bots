@@ -8,6 +8,7 @@ private:
     std::string _nom;
     bool _joueur_1;
 public:
+    Joueur(bool joueur_1);
     Joueur(std::string nom,bool joueur_1);
     virtual void init()=0;
     virtual void init_partie()=0;

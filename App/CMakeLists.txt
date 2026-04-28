@@ -23,7 +23,6 @@ target_link_libraries(Tournois PRIVATE Joueur Jeu)
 
 include(GNUInstallDirs)
 
-
 install(TARGETS Tournois
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

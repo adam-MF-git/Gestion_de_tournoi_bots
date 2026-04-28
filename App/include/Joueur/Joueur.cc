@@ -1,5 +1,9 @@
 #include "Joueur.hh"
 
+Joueur::Joueur(bool joueur_1):_joueur_1(joueur_1) {
+
+}
+
 Joueur::Joueur(std::string nom, bool joueur_1):_nom(nom),_joueur_1(joueur_1) {
 
 }
