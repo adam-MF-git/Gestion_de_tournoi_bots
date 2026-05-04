@@ -1,8 +1,9 @@
 #pragma once
 #include <Joueur/Joueur.hh>
-#include <macro/macro.hh>
+#include <macro/Registre.hh>
 
-class Joueur_template : public Joueur {
+//Rajouté qu'à la fin l'héritage public RegistreAutoJoueur<Votre Classe>
+class Joueur_template : public Joueur, public RegistreAutoJoueur<Joueur_template> {
 private:
 public:
     Joueur_template(std::string nom,bool joueur_1);
@@ -12,4 +13,5 @@ public:
     virtual int recherche_coup(Jeu * const & le_jeu) override;
 };
 
-ENREGISTRER_JOUEUR(Joueur_template)
+// enlevé le commentaire quand vous créerais votre classe
+template class RegistreAutoJoueur<Joueur_template>;

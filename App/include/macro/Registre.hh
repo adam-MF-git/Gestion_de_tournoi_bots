@@ -11,48 +11,82 @@ using FnCreationJeu = PtrJeu(*)();
 
 class Registre {
 private:
-    Registre()=default;
-    ~Registre()=default;
+    Registre()=delete;
+    ~Registre()=delete;
     Registre(Registre const &) = delete;
     Registre & operator=(Registre const &) = delete;
-    std::vector<FnCreationJoueur> _VCFJo;
-    std::vector<FnCreationJeu> _VCFJe;
+
 public:
-    static Registre& instance() {
-        static Registre le_registre;
-        return le_registre;
-    }
+    //Ajoue de donnée
+    static bool ajouter_dans_registre(FnCreationJoueur CFJ, std::string NJo);
+    static bool ajouter_dans_registre(FnCreationJeu CFJ, std::string NJe);
 
-    static bool ajouter_dans_registre(FnCreationJoueur CFJ) {
-        instance()._VCFJo.push_back(CFJ);
-        return true;
-    }
-    static bool ajouter_dans_registre(FnCreationJeu CFJ) {
-        instance()._VCFJe.push_back(CFJ);
-        return true;
-    }
+    //Info
+    static size_t nb_classes_dans_registre_Joueur();
+    static size_t nb_classes_dans_registre_Jeu();
+    static std::string getNomJoueur(size_t position);
+    static std::string getNomJeu(size_t position);
 
-    static size_t nb_classes_dans_registre_Joueur() {
-        return instance()._VCFJo.size();
-    }
-    static size_t nb_classes_dans_registre_Jeu() {
-        return instance()._VCFJe.size();
-    }
+    //Création
+    static PtrJoueur getNouveauJoueur(size_t position,std::string nom, bool joueur_1);
+    static PtrJeu getNouveauJeu(size_t position);
+};
 
-    static PtrJoueur getNouveauJoueur(size_t position,std::string nom, bool joueur_1) {
-        if (position<nb_classes_dans_registre_Joueur())
-            return instance()._VCFJo[position](nom,joueur_1);
-        else
-            return nullptr;
+template <typename classJoueur>
+class RegistreAutoJoueur {
+protected:
+    RegistreAutoJoueur()=default;
+    static bool registre_init;
+private:
+    static std::string nom_classe() {
+#ifdef __clang__
+        std::string nom = __PRETTY_FUNCTION__;
+#elif defined(__GNUC__)
+        std::string nom = __PRETTY_FUNCTION__;
+#elif defined(_MSC_VER)
+        std::string nom = __FUNCSIG__;
+#endif
+        auto pos1(nom.find("="));
+        auto pos2(nom.find(";"));
+        return nom.substr(pos1+2,pos2-pos1-2);
     }
-    static PtrJeu getNouveauJeu(size_t position) {
-        if (position<nb_classes_dans_registre_Joueur())
-            return instance()._VCFJe[position]();
-        else
-            return nullptr;
+    static bool registre() {
+        FnCreationJoueur function = [] (std::string nom,bool joueur_1) -> PtrJoueur {
+            return std::make_unique<classJoueur>(nom,joueur_1);
+        };
+        return Registre::ajouter_dans_registre(function, nom_classe());
+    }
+};
+template <typename classJoueur>
+bool RegistreAutoJoueur<classJoueur>::registre_init = RegistreAutoJoueur<classJoueur>::registre();
+
+
+template <typename classJeu>
+class RegistreAutoJeu {
+protected:
+    RegistreAutoJeu()=default;
+    static bool registre_init;
+private:
+    static std::string nom_classe() {
+#ifdef __clang__
+        std::string nom = __PRETTY_FUNCTION__;
+#elif defined(__GNUC__)
+        std::string nom = __PRETTY_FUNCTION__;
+#elif defined(_MSC_VER)
+        std::string nom = __FUNCSIG__;
+#endif
+        auto pos1(nom.find("="));
+        auto pos2(nom.find(";"));
+        return nom.substr(pos1+2,pos2-pos1-2);
+    }
+    static bool registre() {
+        FnCreationJeu function = [] () -> PtrJeu {
+            return std::make_unique<classJeu>();
+        };
+
+        return Registre::ajouter_dans_registre(function, nom_classe());
     }
 };
 
-
-
-
+template <typename classJeu>
+bool RegistreAutoJeu<classJeu>::registre_init = RegistreAutoJeu<classJeu>::registre();

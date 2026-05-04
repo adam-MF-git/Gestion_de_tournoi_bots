@@ -113,3 +113,7 @@ void Arbitre::tous_partie() {
         inverse=!inverse;
     }
 }
+
+Arbitre::sauvegarde_info Arbitre::sauvegarder() {
+    return sauvegarde_info(_VJ1,_EJ1,_IJ1,_VJ2,_EJ2,_IJ2,_Ega);
+}

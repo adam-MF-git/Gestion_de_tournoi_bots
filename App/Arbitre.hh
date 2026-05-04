@@ -33,5 +33,33 @@ public:
 
     void tous_partie();
 
-    void sauvegarder();
+    struct sauvegarde_info {
+        int VJ1;
+        int EJ1;
+        int IJ1;
+        int VJ2;
+        int EJ2;
+        int IJ2;
+        int Ega;
+        sauvegarde_info() {
+            VJ1=0;
+            EJ1=0;
+            IJ1=0;
+            VJ2=0;
+            EJ2=0;
+            IJ2=0;
+            Ega=0;
+        };
+        sauvegarde_info(int vj1,int ej1, int ij1, int vj2, int ej2, int ij2, int ega) {
+            VJ1=vj1;
+            EJ1=ej1;
+            IJ1=ij1;
+            VJ2=vj2;
+            EJ2=ej2;
+            IJ2=ij2;
+            Ega=ega;
+        };
+    };
+
+    sauvegarde_info sauvegarder();
 };

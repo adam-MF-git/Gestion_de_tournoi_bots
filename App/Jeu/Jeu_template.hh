@@ -1,8 +1,9 @@
 #pragma once
 #include <Jeu/Jeu.hh>
-#include <macro/macro.hh>
+#include <macro/Registre.hh>
 
-class Jeu_template : public Jeu {
+//Rajouté qu'à la fin l'héritage public RegistreAutoJeu<Votre Classe>
+class Jeu_template : public Jeu, public RegistreAutoJeu<Jeu_template> {
 private:
 public:
     Jeu_template();
@@ -18,4 +19,5 @@ public:
     virtual bool egalite() const override;
 };
 
-ENREGISTRER_JEU(Jeu_template)
+// enlevé le commentaire quand vous créerais votre classe
+template class RegistreAutoJeu<Jeu_template>;

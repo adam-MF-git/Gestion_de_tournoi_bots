@@ -1,6 +1,7 @@
 #include "Joueur_template.hh"
 
 Joueur_template::Joueur_template(std::string nom, bool joueur_1):Joueur(nom,joueur_1) {
+    // RegistreAutoJoueur<Joueur_template>::registre_init;
 }
 
 void Joueur_template::init() {

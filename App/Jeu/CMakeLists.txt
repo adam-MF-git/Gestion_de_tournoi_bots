@@ -24,6 +24,7 @@ add_library(Jeu
     ${CMAKE_SOURCE_DIR}/include/Jeu/Jeu.cc
     ${CMAKE_SOURCE_DIR}/include/macro/macro.hh
     ${CMAKE_SOURCE_DIR}/include/macro/Registre.hh
+    ${CMAKE_SOURCE_DIR}/include/macro/Registre.cc
     ${Les_Headers}
     ${Les_Sources}
 )

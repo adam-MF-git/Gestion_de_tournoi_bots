@@ -1,8 +1,8 @@
 #pragma once
 #include <Joueur/Joueur.hh>
-#include <macro/macro.hh>
+#include <macro/Registre.hh>
 
-class Joueur_Random : public Joueur {
+class Joueur_Random : public Joueur, public RegistreAutoJoueur<Joueur_Random> {
 private:
 public:
     Joueur_Random(std::string nom,bool joueur_1);
@@ -12,4 +12,4 @@ public:
     virtual int recherche_coup(Jeu * const & le_jeu) override;
 };
 
-ENREGISTRER_JOUEUR(Joueur_Random)
+template class RegistreAutoJoueur<Joueur_Random>;
