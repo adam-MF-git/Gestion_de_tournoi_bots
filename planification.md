@@ -19,7 +19,7 @@
     Choix entre plusieures implémentation :
         - Docker
         - Sites Random
-        - Application Random (par exemple le pc derrière la box du prof) (Ptit info: j'ai moins envie de ch*er)
+        - Application Random (par exemple le pc derrière la box du prof)
 
 ### 3/ Couche Interface
     Choix entre :
