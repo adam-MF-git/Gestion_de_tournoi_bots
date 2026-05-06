@@ -13,5 +13,8 @@ void Joueur_Random::init_partie() {
 }
 
 int Joueur_Random::recherche_coup(Jeu * const &le_jeu) {
-    return 0;
+	if (le_jeu->nb_coups() == 1)
+		return 1;
+	else
+		return (rand() % le_jeu->nb_coups()) + 1;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <Joueur/Joueur.hh>
 #include <macro/Registre.hh>
+#include <cstdlib>
 
 class Joueur_Random : public Joueur, public RegistreAutoJoueur<Joueur_Random> {
 private:
