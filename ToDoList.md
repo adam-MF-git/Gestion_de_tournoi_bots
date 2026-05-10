@@ -10,4 +10,4 @@
 - Supprimer le fichier macro et tout ces inclusions et autre
 - Modifie la génération de includeTousJeux.hh et includeTousJoueurs.hh
 - Rajoutez à mon readme.md
-
+- Rendre possible de ne pas utilisez l'interface graphique mais de n'utilisez que la console
