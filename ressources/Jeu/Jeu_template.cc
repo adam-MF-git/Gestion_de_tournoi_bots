@@ -23,12 +23,12 @@ int Jeu_template::getetat() const {
 
 bool Jeu_template::coup_autorise(int coup) const {
     //
-    return 0;
+    return 1;
 }
 
 bool Jeu_template::terminer() const {
     //
-    return 0;
+    return 1;
 }
 
 bool Jeu_template::victoire() const {

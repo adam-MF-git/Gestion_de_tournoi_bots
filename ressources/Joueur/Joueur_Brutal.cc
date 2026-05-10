@@ -12,14 +12,14 @@ void Joueur_Brutal::init_partie() {
 
 }
 
-int Joueur_Brutal::recherche_coup(Jeu * const &le_jeu) {
+void Joueur_Brutal::recherche_coup(Jeu * const &le_jeu, int & coup) {
 	// Une chance sur 10 de prendre "trop de temps" pour répondre
 	std::this_thread::sleep_for (std::chrono::milliseconds(rand() % 11)); 
 	
 	// une chance sur 50 de jouer un coup qui ne fait pas partie de la liste de coups
 	// sinon renvoie le dernier coup possible
 	if(rand() % 51 == 0)
-		return le_jeu.nb_coups()+1;
+        coup = le_jeu->nb_coups()+1;
 	else
-		return le_jeu.nb_coups();
+        coup = le_jeu->nb_coups();
 }

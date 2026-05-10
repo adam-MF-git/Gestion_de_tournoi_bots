@@ -5,7 +5,7 @@
 
 
 class Jeu_Idiot:
-	public Jeu, public RegistreAutoJeu<Jeu_Idiot> 
+    public Jeu
 {
 private:
 	int _etat;

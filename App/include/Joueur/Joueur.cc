@@ -21,6 +21,6 @@ void Joueur::setjoueur_1(bool joueur_1) {
 }
 
 void Joueur::jouer(Jeu * const & le_jeu,bool & en_cours,int & coup) {
-    coup=recherche_coup(le_jeu);
+    recherche_coup(le_jeu,coup);
     en_cours=false;
 }

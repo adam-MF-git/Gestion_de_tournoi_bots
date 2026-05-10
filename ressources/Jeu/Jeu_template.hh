@@ -2,8 +2,7 @@
 #include <Jeu/Jeu.hh>
 #include <macro/Registre.hh>
 
-//Rajouté qu'à la fin l'héritage public RegistreAutoJeu<Votre Classe>
-class Jeu_template : public Jeu, public RegistreAutoJeu<Jeu_template> {
+class Jeu_template : public Jeu {
 private:
 public:
     Jeu_template();

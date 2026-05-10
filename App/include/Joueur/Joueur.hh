@@ -17,6 +17,6 @@ public:
     bool getjoueur_1() const;
     void setjoueur_1(bool joueur_1);
 
-    void jouer(Jeu * const & le_jeu,bool & en_cours,int & coup);
-    virtual int recherche_coup(Jeu * const & le_jeu)=0;
+    void jouer(Jeu * const & le_jeu,bool & en_cours, int & coup);
+    virtual void recherche_coup(Jeu * const & le_jeu, int & coup)=0;
 };

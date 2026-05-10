@@ -45,7 +45,7 @@ int Jeu_Idiot::getetat() const {
 }
 
 bool Jeu_Idiot::coup_autorise(int coup) const {
-    return (coup <= nb_coups());
+    return (coup <= nb_coups()) && (coup > 0);
 }
 
 bool Jeu_Idiot::terminer() const {

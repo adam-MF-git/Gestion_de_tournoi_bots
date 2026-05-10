@@ -11,7 +11,7 @@ public:
     virtual void init() override;
     virtual void init_partie() override;
 
-    virtual int recherche_coup(Jeu * const & le_jeu) override;
+    virtual void recherche_coup(Jeu * const & le_jeu, int & coup) override;
 };
 
 template class RegistreAutoJoueur<Joueur_Brutal>;

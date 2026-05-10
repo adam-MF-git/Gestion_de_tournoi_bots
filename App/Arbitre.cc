@@ -111,6 +111,7 @@ void Arbitre::tous_partie() {
     for(int i(0);i<_nb_partie;i++) {
         partie(inverse);
         inverse=!inverse;
+        // std::cout << "nouvelle partie !" << std::endl;
     }
 }
 

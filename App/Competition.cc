@@ -1,6 +1,13 @@
 #include "Competition.hh"
 
 Competition::Competition():_progression(),_resultat() {
+    _progression.open("progression");
+    _progression<<0;
+    _progression.close();
+
+    _resultat.open("progression");
+    _resultat<<"";
+    _resultat.close();
 }
 
 Competition::~Competition() {
@@ -33,7 +40,7 @@ void Competition::lancer_competition() {
 }
 
 void Competition::une_competition(int jeu,int joueur_1,int joueur_2) {
-    Arbitre a(Registre::getNouveauJeu(jeu),Registre::getNouveauJoueur(joueur_1,std::to_string(joueur_1),true),Registre::getNouveauJoueur(joueur_2,std::to_string(joueur_2),false),100);
+    Arbitre a(Registre::getNouveauJeu(jeu),Registre::getNouveauJoueur(joueur_1,Registre::getNomJoueur(joueur_1),true),Registre::getNouveauJoueur(joueur_2,Registre::getNomJoueur(joueur_2),false),100);
     a.tous_partie();
     sauvegarde(Registre::getNomJeu(jeu),Registre::getNomJoueur(joueur_1),Registre::getNomJoueur(joueur_2),a.sauvegarder());
 

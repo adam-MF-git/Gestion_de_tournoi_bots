@@ -1,1 +1,12 @@
+- Regarder l'output pour le __FUNCSIG__ de la méthode nom_classe() de la classe RegistreAutoJoueur
+- Géré quand un thread plante avec un try catch
+- Rendre possible que tournois puisse faire un output de la détection actuelle et un affichage dans la console
+- faire un sh qui fasse le cmake et autre
+- docker
+- le sh qui lance le docker
+- faire des joueurs et des jeux
+- Changer pour permettre plus que 2 joueur
+- Faire un autre type de compétition (Arène)
+- Supprimer le fichier macro et tout ces inclusions et autre
+- Modifie la génération de includeTousJeux.hh et includeTousJoueurs.hh
 

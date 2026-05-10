@@ -2,6 +2,7 @@
 #include "Arbitre.hh"
 #include "Joueur/includeTousJoueurs.hh"
 #include "Jeu/includeTousJeux.hh"
+#include <macro/Registre.hh>
 #include <fstream>
 
 class Competition {
