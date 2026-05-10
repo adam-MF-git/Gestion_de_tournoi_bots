@@ -9,4 +9,5 @@
 - Faire un autre type de compétition (Arène)
 - Supprimer le fichier macro et tout ces inclusions et autre
 - Modifie la génération de includeTousJeux.hh et includeTousJoueurs.hh
+- Rajoutez à mon readme.md
 
