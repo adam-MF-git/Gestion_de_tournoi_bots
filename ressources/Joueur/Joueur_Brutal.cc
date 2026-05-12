@@ -18,8 +18,12 @@ void Joueur_Brutal::recherche_coup(Jeu * const &le_jeu, int & coup) {
 	
 	// une chance sur 50 de jouer un coup qui ne fait pas partie de la liste de coups
 	// sinon renvoie le dernier coup possible
-	if(rand() % 51 == 0)
-        coup = le_jeu->nb_coups()+1;
-	else
+    if(rand() % 3 == 0) {
+        // throw std::logic_error("erreur");
+        std::vector<int> a={1};
+        a.at(15);
+    }
+    else {
         coup = le_jeu->nb_coups();
+    }
 }

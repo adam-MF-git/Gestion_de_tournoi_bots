@@ -1,5 +1,5 @@
 - Regarder l'output pour le __FUNCSIG__ de la méthode nom_classe() de la classe RegistreAutoJoueur
-- Géré quand un thread plante avec un try catch
+- Géré quand un thread plante avec un try catch                                                                                     Pas encore fini
 - Rendre possible que tournois puisse faire un output de la détection actuelle et un affichage dans la console
 - faire un sh qui fasse le cmake et autre
 - docker

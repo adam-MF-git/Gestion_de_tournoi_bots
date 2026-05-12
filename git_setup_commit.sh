@@ -21,17 +21,19 @@ function dossier_valide {
     done
     
     #Parcours tous le dossier pour trouver les potentiels fichiers non attendus
+    detecte_actuel=()
     for fichier in "$path"/*; do
         nom=$(basename "$fichier")
         if [[ ! ${fichier_valide["$nom"]} ]]; then
             #echo "\${fichier_valide[\"\$nom\"]} ${fichier_valide["$nom"]}"
             detecte+=("$1/$nom")
+            detecte_actuel+=("$1/$nom")
         fi
     done
     
-    if [[ ${#detecte[@]} -gt 0 ]]; then
-        echo "${#detecte[@]} fichier(s) supplémentaire(s) détecté(s) dans le dossier '$path' :"
-        printf '  - App/%s\n' "${detecte[@]}"
+    if [[ ${#detecte_actuel[@]} -gt 0 ]]; then
+        echo "${#detecte_actuel[@]} fichier(s) supplémentaire(s) détecté(s) dans le dossier '$path' :"
+        printf '  - App/%s\n' "${detecte_actuel[@]}"
         echo
         teste=1
     else
